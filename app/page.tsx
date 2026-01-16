@@ -44,7 +44,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="text-3xl font-bold tracking-[0.2em] text-amber-900"
@@ -52,7 +52,7 @@ export default function Home() {
           >
             MANDIRA
           </motion.div>
-          
+
           <div className="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
             {['Menu', 'About', 'Gallery', 'Contact'].map((item, i) => (
               <motion.a
@@ -68,13 +68,16 @@ export default function Home() {
             ))}
           </div>
 
-          <motion.button
+          <motion.a
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
+            href="https://wa.me/6281234567890" // You can change this number
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-amber-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-amber-800 transition-all shadow-lg shadow-amber-900/20"
           >
             Book a Table
-          </motion.button>
+          </motion.a>
         </div>
       </nav>
 
@@ -82,7 +85,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center pt-20">
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 0.05, scale: 1 }}
             transition={{ duration: 1.5 }}
@@ -113,22 +116,22 @@ export default function Home() {
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <button className="group bg-amber-900 text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:bg-amber-800 transition-all shadow-xl shadow-amber-900/30">
+              <a href="#menu" className="group bg-amber-900 text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:bg-amber-800 transition-all shadow-xl shadow-amber-900/30">
                 View Our Menu
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 rounded-full font-semibold border-2 border-stone-200 hover:border-amber-900 hover:text-amber-900 transition-all">
+              </a>
+              <a href="#instagram" className="px-8 py-4 rounded-full font-semibold border-2 border-stone-200 hover:border-amber-900 hover:text-amber-900 transition-all">
                 Our Story
-              </button>
+              </a>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
@@ -164,15 +167,15 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative hidden lg:block"
           >
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
-              <img 
-                src="/OPMandira/images/signature-dish.jpg" 
+              <img
+                src="/OPMandira/images/signature-dish.jpg"
                 alt="Mandira Cafe Signature Dish"
                 className="w-full h-[600px] object-cover"
               />
@@ -180,7 +183,7 @@ export default function Home() {
             {/* Decorative elements */}
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-amber-200/30 rounded-full blur-3xl" />
             <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-amber-900/10 rounded-full blur-3xl" />
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -right-12 top-1/4 bg-white p-6 rounded-2xl shadow-xl z-20"
@@ -203,14 +206,14 @@ export default function Home() {
       <section id="menu" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="text-amber-700 font-bold uppercase tracking-[0.2em] text-sm"
             >
               Our Culinary Selection
             </motion.span>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-5xl font-serif font-bold mt-4 text-stone-900"
@@ -225,11 +228,10 @@ export default function Home() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-8 py-3 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${
-                  activeCategory === cat.id 
-                    ? 'bg-amber-900 text-white shadow-lg shadow-amber-900/20' 
+                className={`px-8 py-3 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeCategory === cat.id
+                    ? 'bg-amber-900 text-white shadow-lg shadow-amber-900/20'
                     : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
-                }`}
+                  }`}
               >
                 <span>{cat.icon}</span>
                 {cat.name}
@@ -244,11 +246,11 @@ export default function Home() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
-              transition={{ 
+              transition={{
                 type: "spring",
                 stiffness: 100,
                 damping: 20,
-                duration: 0.5 
+                duration: 0.5
               }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
@@ -262,8 +264,8 @@ export default function Home() {
                   className="group relative bg-stone-50 rounded-3xl overflow-hidden border border-stone-100 hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-500"
                 >
                   <div className="h-64 overflow-hidden relative">
-                    <img 
-                      src={item.image} 
+                    <img
+                      src={item.image}
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -297,19 +299,19 @@ export default function Home() {
       <section id="about" ref={aboutRef} className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div 
+            <motion.div
               style={{ y: imageY }}
               className="relative"
             >
               <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl">
-                <img 
-                  src="/OPMandira/images/restaurant-interior.jpg" 
+                <img
+                  src="/OPMandira/images/restaurant-interior.jpg"
                   alt="Mandira Restaurant Interior"
                   className="w-full h-[700px] object-cover"
                 />
               </div>
               {/* Floating Stats */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
@@ -318,8 +320,8 @@ export default function Home() {
                 <p className="text-4xl font-serif font-bold text-amber-900">25+</p>
                 <p className="text-sm font-bold text-stone-500 uppercase tracking-wider mt-1">Years of Culinary Excellence</p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7 }}
@@ -335,14 +337,14 @@ export default function Home() {
 
             <motion.div style={{ y: textY }} className="space-y-12">
               <div>
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   className="text-amber-700 font-bold uppercase tracking-[0.2em] text-sm"
                 >
                   Our Story
                 </motion.span>
-                <motion.h2 
+                <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -371,7 +373,7 @@ export default function Home() {
                     desc: "We believe food is a universal language. Every dish we serve is crafted with love, using only the freshest locally-sourced ingredients."
                   }
                 ].map((item, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -406,11 +408,11 @@ export default function Home() {
       </section>
 
       {/* Instagram Story Section */}
-      <section className="py-24 bg-stone-900 text-white overflow-hidden">
+      <section id="instagram" className="py-24 bg-stone-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 className="flex items-center gap-3 text-amber-400 font-bold uppercase tracking-widest text-sm mb-4"
@@ -418,7 +420,7 @@ export default function Home() {
                 <Instagram className="w-5 h-5" />
                 <span>Follow Our Journey</span>
               </motion.div>
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 className="text-4xl md:text-5xl font-serif font-bold"
@@ -426,7 +428,7 @@ export default function Home() {
                 Mandira on <span className="italic text-amber-400">Instagram</span>
               </motion.h2>
             </div>
-            <motion.a 
+            <motion.a
               href="#"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -452,16 +454,16 @@ export default function Home() {
                 whileHover={{ y: -10 }}
                 className="relative aspect-[9/16] rounded-2xl overflow-hidden group cursor-pointer"
               >
-                <img 
-                  src={story.url} 
+                <img
+                  src={story.url}
                   alt={story.label}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
-                
+
                 {/* Instagram Story Ring Effect */}
                 <div className="absolute inset-0 border-[3px] border-transparent group-hover:border-amber-500 rounded-2xl transition-all duration-300 m-1" />
-                
+
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="w-8 h-8 rounded-full border-2 border-amber-500 p-0.5 mb-2">
                     <div className="w-full h-full bg-stone-800 rounded-full flex items-center justify-center">
@@ -479,7 +481,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div 
+          <div
             className="text-2xl font-bold tracking-[0.2em] text-white"
             style={{ fontFamily: "'Julius Sans One', sans-serif" }}
           >
