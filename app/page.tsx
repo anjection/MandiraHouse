@@ -12,19 +12,19 @@ const MENU_CATEGORIES = [
 
 const MENU_ITEMS = {
   indonesian: [
-    { name: 'Nasi Goreng Mandira', price: 'Rp 45k', desc: 'Signature fried rice with chicken, prawns, and authentic local spices.', image: 'https://images.unsplash.com/photo-1603052875302-d376b7c7f38a?q=80&w=1000&auto=format&fit=crop' },
-    { name: 'Sate Ayam Madura', price: 'Rp 38k', desc: 'Grilled chicken skewers served with rich peanut sauce and rice cakes.', image: 'https://images.unsplash.com/photo-1529563021893-cc70e27697e0?q=80&w=1000&auto=format&fit=crop' },
-    { name: 'Gado-Gado', price: 'Rp 32k', desc: 'Traditional vegetable salad with tofu, tempeh, and peanut dressing.', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1000&auto=format&fit=crop' },
+    { name: 'Nasi Goreng Mandira', price: 'Rp 45k', desc: 'Signature fried rice with chicken, prawns, and authentic local spices.', image: '/OPMandira/images/nasi-goreng.png' },
+    { name: 'Sate Ayam Madura', price: 'Rp 38k', desc: 'Grilled chicken skewers served with rich peanut sauce and rice cakes.', image: '/OPMandira/images/sate-ayam.png' },
+    { name: 'Gado-Gado', price: 'Rp 32k', desc: 'Traditional vegetable salad with tofu, tempeh, and peanut dressing.', image: '/OPMandira/images/gado-gado.png' },
   ],
   western: [
-    { name: 'Mandira Beef Burger', price: 'Rp 65k', desc: 'Juicy wagyu patty with caramelized onions, cheddar, and secret sauce.', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop' },
-    { name: 'Grilled Salmon Steak', price: 'Rp 120k', desc: 'Fresh Atlantic salmon with lemon butter sauce and mashed potatoes.', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=1000&auto=format&fit=crop' },
-    { name: 'Creamy Carbonara', price: 'Rp 55k', desc: 'Classic pasta with smoked beef, parmesan, and rich cream sauce.', image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=1000&auto=format&fit=crop' },
+    { name: 'Mandira Beef Burger', price: 'Rp 65k', desc: 'Juicy wagyu patty with caramelized onions, cheddar, and secret sauce.', image: '/OPMandira/images/beef-burger.png' },
+    { name: 'Grilled Salmon Steak', price: 'Rp 120k', desc: 'Fresh Atlantic salmon with lemon butter sauce and mashed potatoes.', image: '/OPMandira/images/salmon-steak.png' },
+    { name: 'Creamy Carbonara', price: 'Rp 55k', desc: 'Classic pasta with smoked beef, parmesan, and rich cream sauce.', image: '/OPMandira/images/carbonara.png' },
   ],
   chinese: [
-    { name: 'Dim Sum Platter', price: 'Rp 42k', desc: 'Assorted handmade dumplings served with chili oil and soy sauce.', image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?q=80&w=1000&auto=format&fit=crop' },
-    { name: 'Kung Pao Chicken', price: 'Rp 48k', desc: 'Stir-fried chicken with peanuts, vegetables, and spicy Szechuan sauce.', image: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?q=80&w=1000&auto=format&fit=crop' },
-    { name: 'Beef Black Pepper', price: 'Rp 58k', desc: 'Tender beef slices tossed in aromatic black pepper sauce.', image: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1000&auto=format&fit=crop' },
+    { name: 'Dim Sum Platter', price: 'Rp 42k', desc: 'Assorted handmade dumplings served with chili oil and soy sauce.', image: '/OPMandira/images/dim-sum.jpg' },
+    { name: 'Kung Pao Chicken', price: 'Rp 48k', desc: 'Stir-fried chicken with peanuts, vegetables, and spicy Szechuan sauce.', image: '/OPMandira/images/kung-pao.jpg' },
+    { name: 'Beef Black Pepper', price: 'Rp 58k', desc: 'Tender beef slices tossed in aromatic black pepper sauce.', image: '/OPMandira/images/beef-black-pepper.jpg' },
   ],
 };
 
@@ -88,7 +88,7 @@ export default function Home() {
             transition={{ duration: 1.5 }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full"
           >
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2074&auto=format&fit=crop')] bg-cover bg-center" />
+            <div className="absolute inset-0 bg-[url('/OPMandira/images/hero-bg.jpg')] bg-cover bg-center" />
           </motion.div>
           <div className="absolute top-0 right-0 w-1/3 h-full bg-amber-50/50 -skew-x-12 translate-x-1/2" />
         </div>
@@ -172,7 +172,7 @@ export default function Home() {
           >
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
               <img 
-                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop" 
+                src="/OPMandira/images/signature-dish.jpg" 
                 alt="Mandira Cafe Signature Dish"
                 className="w-full h-[600px] object-cover"
               />
@@ -303,7 +303,7 @@ export default function Home() {
             >
               <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop" 
+                  src="/OPMandira/images/restaurant-interior.jpg" 
                   alt="Mandira Restaurant Interior"
                   className="w-full h-[700px] object-cover"
                 />
@@ -438,11 +438,11 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {[
-              { url: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop', label: 'Chef at work' },
-              { url: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop', label: 'Signature Drinks' },
-              { url: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop', label: 'Cozy Corner' },
-              { url: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000&auto=format&fit=crop', label: 'Plating Art' },
-              { url: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1000&auto=format&fit=crop', label: 'Fresh Pizza' },
+              { url: '/OPMandira/images/insta-1.jpg', label: 'Chef at work' },
+              { url: '/OPMandira/images/insta-2.jpg', label: 'Signature Drinks' },
+              { url: '/OPMandira/images/insta-3.jpg', label: 'Cozy Corner' },
+              { url: '/OPMandira/images/insta-4.jpg', label: 'Plating Art' },
+              { url: '/OPMandira/images/insta-5.jpg', label: 'Fresh Pizza' },
             ].map((story, i) => (
               <motion.div
                 key={i}
