@@ -300,7 +300,7 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-2 lg:-right-12 top-[2%] bg-white p-6 rounded-2xl shadow-xl z-20 scale-90 lg:scale-100" // Adjusted for mobile visibility
+              className="absolute right-2 lg:-right-12 top-[10%] bg-white p-6 rounded-2xl shadow-xl z-20 scale-90 lg:scale-100" // Adjusted for mobile visibility
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700">
