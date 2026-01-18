@@ -211,9 +211,9 @@ export default function Home() {
                 Indonesian • Western • Chinese
               </span>
               <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[1.1] text-stone-900">
-                Dine in at<br />
-                <span className="text-amber-700 italic" style={{ fontFamily: "'Julius Sans One', sans-serif" }}>Mandira</span> <br />
-                House.
+                Elevating<br />
+                <span className="text-amber-700 italic">Local</span> <br />
+                Taste.
               </h1>
               <p className="mt-6 text-lg text-stone-600 max-w-md leading-relaxed">
                 Experience the rich heritage of local Indonesian spices, the comfort of Western classics, and the bold tastes of Chinese cuisine, all under one roof at Mandira.
