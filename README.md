@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mandira House
 
-## Getting Started
+A premium restaurant website built with Next.js, featuring a modern grid-based menu, high-end aesthetics, and responsiveness.
 
-First, run the development server:
+## 🚀 Getting Started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Local Development
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/anjection/MandiraHouse.git
+    cd MandiraHouse
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
-## Learn More
+4.  **Access the application**:
+    Open [http://localhost:3000/MandiraHouse](http://localhost:3000/MandiraHouse) in your browser.
+    *Note: Since `basePath` is set to `/MandiraHouse` in `next.config.mjs`, the app is served from that subpath even locally.*
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/page.tsx`: Main landing page and logic.
+- `app/components/`: Reusable components (EventSliders, etc.).
+- `public/images/`: Optimized assets for the restaurant and menu.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Deployment
 
-## Deploy on Vercel
+This project is configured for static export to **GitHub Pages**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### How to Build & Deploy Manualy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  **Build the project**:
+    ```bash
+    npm run build
+    ```
+    This generates an `out/` directory with static HTML, CSS, and JS.
+
+2.  **Push to GitHub**:
+    The project is hosted at `https://github.com/anjection/MandiraHouse.git`.
+
+3.  **Static Hosting**:
+    The live site is accessible at: [https://anjection.github.io/MandiraHouse/](https://anjection.github.io/MandiraHouse/)
+
+## 🎨 Credits
+
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Typography**: Julius Sans One, Inter
