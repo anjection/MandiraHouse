@@ -186,7 +186,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center pt-20">
+      <section className="relative min-h-screen lg:h-screen flex items-start lg:items-center pt-32 lg:pt-20">
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <motion.div
