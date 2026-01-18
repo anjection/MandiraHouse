@@ -4,7 +4,7 @@ import Script from 'next/script';
 import EventSlider from './components/EventSlider';
 import EventSliderMenu from './components/EventSliderMenu';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Utensils, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine } from 'lucide-react';
+import { Utensils, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine, FacebookIcon, MessageCircle } from 'lucide-react';
 import { useState, useRef } from 'react';
 import style from 'styled-jsx/style';
 
@@ -376,7 +376,7 @@ export default function Home() {
                       </h3>
                     </div>
                     <button className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-900 group-hover:gap-3 transition-all">
-                      Order Now <ChevronRight className="w-3 h-3" />
+                      Book Now<ChevronRight className="w-3 h-3" />
                     </button>
                   </div>
                 </motion.div>
@@ -593,7 +593,7 @@ export default function Home() {
 
       {/* Footer / Contact */}
       <footer id="contact" className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-12">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6">
           {/* Logo Container - Adjust width here (e.g. w-32, w-40, w-[200px]) to resize */}
           <motion.div
             initial={{ filter: "drop-shadow(0 0 0px rgba(255, 255, 255, 0))" }}
@@ -612,19 +612,23 @@ export default function Home() {
             />
           </motion.div>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
-            <div className="flex items-center gap-8">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-            </div>
             <div className="flex items-center gap-4">
+              <a href="https://wa.me/6285378736669" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
+                <MessageCircle className="w-5 h-5" />
+              </a>
               <a href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="/MandiraHouse" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
+                <FacebookIcon className="w-5 h-5" />
+              </a>
+              <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
                 <Globe className="w-5 h-5" />
               </a>
             </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <a href="#" className="hover:text-white transition-colors">all rights reserved to @anjection</a>
           </div>
         </div>
       </footer>
