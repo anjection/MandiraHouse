@@ -4,7 +4,7 @@ import Script from 'next/script';
 import EventSlider from './components/EventSlider';
 import EventSliderMenu from './components/EventSliderMenu';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Utensils, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine, FacebookIcon, MessageCircle } from 'lucide-react';
+import { Utensils, ChevronDown, ChevronsDown, MoveDown, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine, FacebookIcon, MessageCircle, ArrowDown } from 'lucide-react';
 import { useState, useRef } from 'react';
 import style from 'styled-jsx/style';
 
@@ -344,62 +344,127 @@ export default function Home() {
 
           {/* Menu Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Initial Items - Staggered Entry */}
+            {ALL_MENU_ITEMS.slice(0, 6).map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1.2,
+                  delay: index * 0.15,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="group relative bg-stone-100 rounded-3xl overflow-hidden border border-stone-100 hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-700"
+              >
+                <div className="h-64 overflow-hidden relative">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <p className="text-white text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
+                    <span className="text-amber-900 font-bold text-sm">{item.price}</span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-serif font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
+                      {item.name}
+                    </h3>
+                  </div>
+                  <button className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-900 group-hover:gap-3 transition-all">
+                    Book Now<ChevronRight className="w-3 h-3" />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Hidden items with "Slow Motion Curtain" effect */}
             <AnimatePresence>
-              {ALL_MENU_ITEMS.slice(0, visibleCount).map((item, index) => (
+              {visibleCount > 6 && (
                 <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group relative bg-stone-200 rounded-3xl overflow-hidden border border-stone-100 hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-700"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  transition={{
+                    duration: 2.5, // Much slower for luxury feel
+                    ease: [0.65, 0, 0.35, 1] // Custom refined ease-in-out
+                  }}
+                  className="col-span-full grid md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden"
                 >
-                  <div className="h-64 overflow-hidden relative">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                      <p className="text-white text-sm leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
-                      <span className="text-amber-900 font-bold text-sm">{item.price}</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-serif font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
-                        {item.name}
-                      </h3>
-                    </div>
-                    <button className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-900 group-hover:gap-3 transition-all">
-                      Book Now<ChevronRight className="w-3 h-3" />
-                    </button>
-                  </div>
+                  {ALL_MENU_ITEMS.slice(6).map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, scale: 0.95, y: 40 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{
+                        duration: 1.5,
+                        delay: index * 0.2 + 0.4, // Staggered delay for each card
+                        ease: [0.22, 1, 0.36, 1]
+                      }}
+                      className="group relative bg-stone-100 rounded-3xl overflow-hidden border border-stone-100 hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-700"
+                    >
+                      <div className="h-64 overflow-hidden relative">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                          <p className="text-white text-sm leading-relaxed">
+                            {item.desc}
+                          </p>
+                        </div>
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
+                          <span className="text-amber-900 font-bold text-sm">{item.price}</span>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="text-xl font-serif font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
+                            {item.name}
+                          </h3>
+                        </div>
+                        <button className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-900 group-hover:gap-3 transition-all">
+                          Book Now<ChevronRight className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </motion.div>
+                  ))}
                 </motion.div>
-              ))}
+              )}
             </AnimatePresence>
           </div>
 
           {/* Show More Button */}
-          {visibleCount < ALL_MENU_ITEMS.length && (
-            <div className="mt-12 flex justify-center">
-              <motion.button
-                whileHover={{ scale: 1.1, y: 5 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setVisibleCount(ALL_MENU_ITEMS.length)}
-                className="flex flex-col items-center gap-2 text-amber-900 font-bold uppercase tracking-widest text-sm"
+          <AnimatePresence>
+            {visibleCount < ALL_MENU_ITEMS.length && (
+              <motion.div
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                transition={{ duration: 1.2 }}
+                className="mt-16 flex justify-center"
               >
-                <span>View All Menu</span>
-                <div className="w-10 h-10 rounded-full border-2 border-amber-900 flex items-center justify-center animate-bounce">
-                  <ArrowRight className="w-4 h-4 rotate-90" />
-                </div>
-              </motion.button>
-            </div>
-          )}
+                <motion.button
+                  whileHover={{ scale: 1.05, y: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setVisibleCount(ALL_MENU_ITEMS.length)}
+                  className="flex flex-col items-center gap-3 text-amber-900 font-bold uppercase tracking-widest text-sm group"
+                >
+                  <span className="opacity-60 group-hover:opacity-100 transition-opacity">Discover More</span>
+                  <div className="w-12 h-12 rounded-full border border-amber-900/30 flex items-center justify-center animate-bounce group-hover:border-amber-900 transition-colors">
+                    <ArrowDown className="w-4 h-4" />
+                  </div>
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
