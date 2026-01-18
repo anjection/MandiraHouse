@@ -224,7 +224,6 @@ export default function EventSlider({ onPauseChange, onNameChange }: { onPauseCh
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    layoutId={`image-${currentIndex}`}
                     transition={{
                         x: { type: "spring", stiffness: 300, damping: 30 },
                         opacity: { duration: 0.5 } // Smooth fade for slow motion feel

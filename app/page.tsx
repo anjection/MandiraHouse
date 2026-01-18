@@ -147,7 +147,7 @@ export default function Home() {
               <div className="p-6 flex text-center flex-col gap-6">
                 {[
                   { name: 'Menu', href: '#menu' },
-                  { name: 'About', href: '#about' },
+                  { name: 'Our Services', href: '#about' },
                   { name: 'Gallery', href: '#gallery' },
                   { name: 'Contact', href: '#contact' }
                 ].map((item) => (
@@ -158,9 +158,13 @@ export default function Home() {
                     onClick={(e) => {
                       e.preventDefault();
                       setIsMenuOpen(false);
-                      document.querySelector(item.href)?.scrollIntoView({
-                        behavior: 'smooth'
-                      });
+                      // Smooth scroll after a slight delay to allow the menu to start closing
+                      setTimeout(() => {
+                        const element = document.querySelector(item.href);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }, 10);
                     }}
                   >
                     {item.name}
@@ -168,7 +172,7 @@ export default function Home() {
                 ))}
 
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6285378736669"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-amber-900 text-white px-6 py-4 rounded-full text-center text-sm font-medium uppercase tracking-widest hover:bg-amber-800 transition-all shadow-lg shadow-amber-900/20"
@@ -208,9 +212,9 @@ export default function Home() {
                 Indonesian • Western • Chinese
               </span>
               <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[1.1] text-stone-900">
-                A Fusion of <br />
-                <span className="text-amber-700 italic">Global</span> <br />
-                Flavors.
+                Elevating<br />
+                <span className="text-amber-700 italic">Local</span> <br />
+                Taste.
               </h1>
               <p className="mt-6 text-lg text-stone-600 max-w-md leading-relaxed">
                 Experience the rich heritage of local Indonesian spices, the comfort of Western classics, and the bold tastes of Chinese cuisine, all under one roof at Mandira.
@@ -235,14 +239,14 @@ export default function Home() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="#instagram"
+                href="#about"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector('#instagram')?.scrollIntoView({ behavior: 'smooth' });
+                  document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="px-8 py-4 rounded-full font-semibold border-2 border-stone-200 hover:border-amber-900 hover:text-amber-900 transition-all"
               >
-                Our Story
+                Our Services
               </a>
             </motion.div>
 
@@ -413,7 +417,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
                 className="absolute -right-8 top-1/4 bg-white p-8 rounded-3xl shadow-2xl z-20 max-w-[200px]"
               >
-                <p className="text-4xl font-serif font-bold text-amber-900"></p>
+                <p className="text-4xl font-serif font-bold text-amber-900">12+</p>
                 <p className="text-sm font-bold text-stone-500 uppercase tracking-wider mt-1">Years of Culinary Excellence</p>
               </motion.div>
 
@@ -439,7 +443,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   className="text-amber-700 font-bold uppercase tracking-[0.2em] text-sm"
                 >
-                  Our Story
+                  Our Services
                 </motion.span>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
@@ -495,7 +499,7 @@ export default function Home() {
                 className="pt-6"
               >
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6285378736669"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-stone-900 text-white px-10 py-4 rounded-full font-bold hover:bg-stone-800 transition-all shadow-xl inline-flex items-center gap-3 group"
@@ -603,7 +607,7 @@ export default function Home() {
               <a href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
+              <a href="/MandiraHouse" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
                 <Globe className="w-5 h-5" />
               </a>
             </div>
