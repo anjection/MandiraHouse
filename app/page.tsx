@@ -289,9 +289,9 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative hidden lg:block"
+            className="relative block mt-12 lg:mt-0"
           >
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl h-[720px]">
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl h-[450px] lg:h-[720px]">
               <EventSliderMenu onNameChange={setHeroDishName} />
             </div>
             {/* Decorative elements */}
@@ -300,7 +300,7 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-12 top-1/4 bg-white p-6 rounded-2xl shadow-xl z-20" // Adjust 'top-1/4' to move up/down, '-right-12' for left/right
+              className="absolute right-4 lg:-right-12 top-1/4 bg-white p-6 rounded-2xl shadow-xl z-20 scale-90 lg:scale-100" // Adjusted for mobile visibility
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700">
