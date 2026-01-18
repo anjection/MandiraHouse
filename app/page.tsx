@@ -50,7 +50,7 @@ const ALL_MENU_ITEMS = [
     name: 'Nasi Ikan Asin Peda Cabe Hijau',
     price: 'Rp 15k',
     desc: 'Nasi ikan asin peda dengan cabe hijau.',
-    image: '/MandiraHouse/images/menu-items/Nasi Ikan Asin Peda Cabe Hijau.png'
+    image: '/MandiraHouse/images/menu-items/Nasi Ikan Asin Peda.png'
   },
   {
     name: 'Snack Platter',
@@ -352,13 +352,13 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group relative bg-stone-50 rounded-3xl overflow-hidden border border-stone-100 hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-500"
+                  className="group relative bg-stone-200 rounded-3xl overflow-hidden border border-stone-100 hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-700"
                 >
                   <div className="h-64 overflow-hidden relative">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <p className="text-white text-sm leading-relaxed">
