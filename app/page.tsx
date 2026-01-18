@@ -589,13 +589,22 @@ export default function Home() {
       <footer id="contact" className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-12">
           {/* Logo Container - Adjust width here (e.g. w-32, w-40, w-[200px]) to resize */}
-          <div className="relative w-[200px]">
+          <motion.div
+            initial={{ filter: "drop-shadow(0 0 0px rgba(255, 255, 255, 0))" }}
+            whileHover={{
+              scale: 1.05,
+              filter: "drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))"
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="relative w-[200px] cursor-pointer transition-all duration-300"
+          >
             <img
               src="/MandiraHouse/Logo_mandira.svg"
               alt="MANDIRA"
               className="w-full h-auto object-contain brightness-0 invert"
             />
-          </div>
+          </motion.div>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
             <div className="flex items-center gap-8">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
