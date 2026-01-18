@@ -19,7 +19,7 @@ const ALL_MENU_ITEMS = [
   {
     name: 'Short Plate Daging Sapi Sauce Lada Hitam',
     price: 'Rp 35k',
-    desc: 'Short plate daging sapi dengan saus lada hitam, kentang goreng dan sayuran.',
+    desc: 'Short plate daging sapi dengan saus lada hitam, dan sayuran.',
     image: '/MandiraHouse/images/menu-items/Short Plate Daging Sapi Saus Lada Hitam.png'
   },
   {
@@ -35,22 +35,28 @@ const ALL_MENU_ITEMS = [
     image: '/MandiraHouse/images/menu-items/Udang Sc Mentega.png'
   },
   {
+    name: 'Capcay Goreng Kuah Ayam',
+    price: 'Rp 20k',
+    desc: 'Capcay goreng dengan kuah ayam.',
+    image: '/MandiraHouse/images/menu-items/Capcay Goreng Kuah Ayam.png'
+  },
+  {
     name: 'Fuyung Hai Isi Seafood',
     price: 'Rp 25k',
-    desc: 'Fuyunghai dengan seafood, nasi putih.',
+    desc: 'Fuyunghai dengan seafood.',
     image: '/MandiraHouse/images/menu-items/Fuyunghai Isi Seafood.png'
+  },
+  {
+    name: 'Nasi Ikan Asin Peda Cabe Hijau',
+    price: 'Rp 15k',
+    desc: 'Nasi ikan asin peda dengan cabe hijau.',
+    image: '/MandiraHouse/images/menu-items/Nasi Ikan Asin Peda Cabe Hijau.png'
   },
   {
     name: 'Snack Platter',
     price: 'Rp 20k',
-    desc: 'Kentang goreng, sosis, nugget, dan onion ring.',
+    desc: 'Kentang goreng, sosis, dan nugget.',
     image: '/MandiraHouse/images/menu-items/Snack Platter.png'
-  },
-  {
-    name: 'Capcay Goreng Kuah Ayam',
-    price: 'Rp 20k',
-    desc: 'Capcay goreng dengan kuah, nasi putih, dan ayam.',
-    image: '/MandiraHouse/images/menu-items/Capcay Goreng Kuah Ayam.png'
   },
   {
     name: 'Bakwan Jagung Bumbu Kacang',
