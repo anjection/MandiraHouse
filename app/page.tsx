@@ -105,7 +105,6 @@ export default function Home() {
                 className="hover:text-amber-700 transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
-                  setIsMenuOpen(false);
                   document.querySelector(item.href)?.scrollIntoView({
                     behavior: 'smooth'
                   });
@@ -159,10 +158,12 @@ export default function Home() {
                     onClick={(e) => {
                       e.preventDefault();
                       setIsMenuOpen(false);
-                      const element = document.querySelector(item.href);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
+                      setTimeout(() => {
+                        const element = document.querySelector(item.href);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }, 10);
                     }}
                   >
                     {item.name}
