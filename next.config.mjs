@@ -2,7 +2,7 @@
 
 const nextConfig = {
 	output: 'export', // Enable static export
-	basePath: '/OPMandira', // Replace with your repository name
+	basePath: '/MandiraHouse', // Replace with your repository name
 	images: {
 		unoptimized: true, // GitHub Pages doesn't support Next.js Image Optimization
 		remotePatterns: [

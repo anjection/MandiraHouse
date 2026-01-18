@@ -48,7 +48,7 @@ This project is configured for **Static Site Generation (SSG)**.
 
 ## 🌐 Deployment (GitHub Pages)
 
-The project is pre-configured to be hosted on GitHub Pages under the `/OPMandira` path.
+The project is pre-configured to be hosted on GitHub Pages under the `/MandiraHouse` path.
 
 ### Configuration
 If you change the repository name, you **must** update the `basePath` in `next.config.mjs`:
@@ -76,3 +76,32 @@ const nextConfig = {
 - **Icons**: Lucide React
 - **Backend (Optional)**: Supabase (Pre-configured client available in `lib/supabase`)
 - **Analytics**: PostHog
+
+---
+
+## 📂 Project Structure & Configurations Explained
+
+### File Structure
+- **`app/`**: Contains the main application code (App Router). `page.tsx` is the home page.
+- **`public/`**: Stores static assets like images. These are served directly.
+- **`lib/`**: Utility functions and shared code (e.g., Supabase client).
+- **`next.config.mjs`**: Main configuration file for Next.js.
+
+### Key Configuration Decisions ("The Why")
+
+#### 1. Static Export (`output: 'export'`)
+*   **Why?**: This changes Next.js from a server-side framework to a static site generator.
+*   **Benefit**: Allows the app to be hosted on any static hosting service like GitHub Pages, Vercel, or Netlify without needing a Node.js server.
+*   **Trade-off**: Dynamic server-side features (like `getServerSideProps` or API routes) won't work in the conventional way.
+
+#### 2. Base Path (`basePath: '/MandiraHouse'`)
+*   **Why?**: Required for GitHub Pages project sites which are hosted at `username.github.io/repo-name`.
+*   **Effect**: All internal links and asset URLs are automatically prefixed with `/MandiraHouse` so they resolve correctly on the live site.
+
+#### 3. Unoptimized Images (`images: { unoptimized: true }`)
+*   **Why?**: Next.js's default Image component relies on a server to optimize images on-the-fly. Since we are doing a static export, there is no server to process these images.
+*   **Effect**: Images are served as-is without automatic resizing or format conversion.
+
+#### 4. Lint/Type Check Skips in Dev
+*   **Why?**: The `dev` script includes `NEXT_DISABLE_ESLINT=1`.
+*   **Benefit**: Drastically speeds up the development server startup time and hot reloading by skipping strict checks during rapid iteration. Strict checks are still run during build or manually.

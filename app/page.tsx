@@ -1,36 +1,70 @@
 'use client';
 
+import Script from 'next/script';
+import EventSlider from './components/EventSlider';
+import EventSliderMenu from './components/EventSliderMenu';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Utensils, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X } from 'lucide-react';
+import { Utensils, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine } from 'lucide-react';
 import { useState, useRef } from 'react';
+import style from 'styled-jsx/style';
 
-const MENU_CATEGORIES = [
-  { id: 'indonesian', name: 'Indonesian', icon: '🇮🇩' },
-  { id: 'western', name: 'Western', icon: '🍔' },
-  { id: 'chinese', name: 'Chinese', icon: '🥢' },
+// MENU DATA - Edit descriptions and prices here
+const ALL_MENU_ITEMS = [
+  {
+    name: 'Nasi Goreng Cikur Babat Sapi',
+    price: 'Rp 25k',
+    desc: 'Nasi goreng dengan rempah kencur dan gurih dari oncom dipadukan dengan babat sapi, telur ceplok, acar dan krupuk.',
+    image: '/MandiraHouse/images/menu-items/Nasgor Cikur Babat Sapi.png'
+  },
+  {
+    name: 'Short Plate Daging Sapi Sauce Lada Hitam',
+    price: 'Rp 35k',
+    desc: 'Short plate daging sapi dengan saus lada hitam, kentang goreng dan sayuran.',
+    image: '/MandiraHouse/images/menu-items/Short Plate Daging Sapi Saus Lada Hitam.png'
+  },
+  {
+    name: 'Spagheti Bolognaise',
+    price: 'Rp 25k',
+    desc: 'Spagheti dengan saus bolognaise, daging sapi cincang, dan keju parmesan.',
+    image: '/MandiraHouse/images/menu-items/Spagheti Bolognaise.png'
+  },
+  {
+    name: 'Udang Sc Mentega',
+    price: 'Rp 35k',
+    desc: 'Udang saus mentega, nasi putih, dan sayuran.',
+    image: '/MandiraHouse/images/menu-items/Udang Sc Mentega.png'
+  },
+  {
+    name: 'Fuyung Hai Isi Seafood',
+    price: 'Rp 25k',
+    desc: 'Fuyunghai dengan seafood, nasi putih.',
+    image: '/MandiraHouse/images/menu-items/Fuyunghai Isi Seafood.png'
+  },
+  {
+    name: 'Snack Platter',
+    price: 'Rp 20k',
+    desc: 'Kentang goreng, sosis, nugget, dan onion ring.',
+    image: '/MandiraHouse/images/menu-items/Snack Platter.png'
+  },
+  {
+    name: 'Capcay Goreng Kuah Ayam',
+    price: 'Rp 20k',
+    desc: 'Capcay goreng dengan kuah, nasi putih, dan ayam.',
+    image: '/MandiraHouse/images/menu-items/Capcay Goreng Kuah Ayam.png'
+  },
+  {
+    name: 'Bakwan Jagung Bumbu Kacang',
+    price: 'Rp 15k',
+    desc: 'Bakwan jagung dengan bumbu kacang.',
+    image: '/MandiraHouse/images/menu-items/Bakwan Jagung Bumbu Kacang .png'
+  },
 ];
 
-const MENU_ITEMS = {
-  indonesian: [
-    { name: 'Nasi Goreng Mandira', price: 'Rp 45k', desc: 'Signature fried rice with chicken, prawns, and authentic local spices.', image: '/OPMandira/images/nasi-goreng.png' },
-    { name: 'Sate Ayam Madura', price: 'Rp 38k', desc: 'Grilled chicken skewers served with rich peanut sauce and rice cakes.', image: '/OPMandira/images/sate-ayam.png' },
-    { name: 'Gado-Gado', price: 'Rp 32k', desc: 'Traditional vegetable salad with tofu, tempeh, and peanut dressing.', image: '/OPMandira/images/gado-gado.png' },
-  ],
-  western: [
-    { name: 'Mandira Beef Burger', price: 'Rp 65k', desc: 'Juicy wagyu patty with caramelized onions, cheddar, and secret sauce.', image: '/OPMandira/images/beef-burger.png' },
-    { name: 'Grilled Salmon Steak', price: 'Rp 120k', desc: 'Fresh Atlantic salmon with lemon butter sauce and mashed potatoes.', image: '/OPMandira/images/salmon-steak.png' },
-    { name: 'Creamy Carbonara', price: 'Rp 55k', desc: 'Classic pasta with smoked beef, parmesan, and rich cream sauce.', image: '/OPMandira/images/carbonara.png' },
-  ],
-  chinese: [
-    { name: 'Dim Sum Platter', price: 'Rp 42k', desc: 'Assorted handmade dumplings served with chili oil and soy sauce.', image: '/OPMandira/images/dim-sum.jpg' },
-    { name: 'Kung Pao Chicken', price: 'Rp 48k', desc: 'Stir-fried chicken with peanuts, vegetables, and spicy Szechuan sauce.', image: '/OPMandira/images/kung-pao.jpg' },
-    { name: 'Beef Black Pepper', price: 'Rp 58k', desc: 'Tender beef slices tossed in aromatic black pepper sauce.', image: '/OPMandira/images/beef-black-pepper.jpg' },
-  ],
-};
-
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState('indonesian');
+  const [visibleCount, setVisibleCount] = useState(6); // Show 6 items initially (2 rows x 3 cols)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSliderPaused, setIsSliderPaused] = useState(false);
+  const [heroDishName, setHeroDishName] = useState('Nasi Goreng');
   const aboutRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: aboutRef,
@@ -58,7 +92,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
             {[
               { name: 'Menu', href: '#menu' },
-              { name: 'About', href: '#about' },
+              { name: 'Our Services', href: '#about' },
               { name: 'Gallery', href: '#gallery' },
               { name: 'Contact', href: '#contact' }
             ].map((item, i) => (
@@ -89,7 +123,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="hidden md:block bg-amber-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-amber-800 transition-all shadow-lg shadow-amber-900/20"
           >
-            Book a Table
+            Book Now
           </motion.a>
 
           {/* Mobile Menu Toggle */}
@@ -110,7 +144,7 @@ export default function Home() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden bg-white/95 backdrop-blur-md border-t border-stone-200 overflow-hidden"
             >
-              <div className="p-6 flex flex-col gap-6">
+              <div className="p-6 flex text-center flex-col gap-6">
                 {[
                   { name: 'Menu', href: '#menu' },
                   { name: 'About', href: '#about' },
@@ -140,7 +174,7 @@ export default function Home() {
                   className="bg-amber-900 text-white px-6 py-4 rounded-full text-center text-sm font-medium uppercase tracking-widest hover:bg-amber-800 transition-all shadow-lg shadow-amber-900/20"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Book a Table
+                  Book Now
                 </a>
               </div>
             </motion.div>
@@ -158,12 +192,12 @@ export default function Home() {
             transition={{ duration: 1.5 }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full"
           >
-            <div className="absolute inset-0 bg-[url('/OPMandira/images/hero-bg.jpg')] bg-cover bg-center" />
+            <div className="absolute inset-0 bg-[url('/MandiraHouse/images/hero-bg.jpg')] bg-cover bg-center" />
           </motion.div>
           <div className="absolute top-0 right-0 w-1/3 h-full bg-amber-50/50 -skew-x-12 translate-x-1/2" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-[40%_60%] gap-12 items-center">
           <div className="space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -179,7 +213,7 @@ export default function Home() {
                 Flavors.
               </h1>
               <p className="mt-6 text-lg text-stone-600 max-w-md leading-relaxed">
-                Experience the rich heritage of Indonesian spices, the comfort of Western classics, and the bold tastes of Chinese cuisine, all under one roof at Mandira.
+                Experience the rich heritage of local Indonesian spices, the comfort of Western classics, and the bold tastes of Chinese cuisine, all under one roof at Mandira.
               </p>
             </motion.div>
 
@@ -254,12 +288,8 @@ export default function Home() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative hidden lg:block"
           >
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
-              <img
-                src="/OPMandira/images/signature-dish.jpg"
-                alt="Mandira Cafe Signature Dish"
-                className="w-full h-[600px] object-cover"
-              />
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl h-[720px]">
+              <EventSliderMenu onNameChange={setHeroDishName} />
             </div>
             {/* Decorative elements */}
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-amber-200/30 rounded-full blur-3xl" />
@@ -267,15 +297,15 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-12 top-1/4 bg-white p-6 rounded-2xl shadow-xl z-20"
+              className="absolute -right-12 top-[75%] bg-white p-6 rounded-2xl shadow-xl z-20" // Adjust 'top-[75%]' to move up/down, '-right-12' for left/right
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700">
                   <UtensilsCrossed className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold">Chef's Special</p>
-                  <p className="text-xs text-stone-500">Nasi Goreng <span style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA</span></p>
+                  <p className="text-sm font-bold">Chef's Selection</p>
+                  <p className="text-xs text-stone-500">{heroDishName} <span style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA</span></p>
                 </div>
               </div>
             </motion.div>
@@ -303,39 +333,10 @@ export default function Home() {
             </motion.h2>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex justify-center gap-4 mb-12">
-            {MENU_CATEGORIES.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-8 py-3 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${activeCategory === cat.id
-                  ? 'bg-amber-900 text-white shadow-lg shadow-amber-900/20'
-                  : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
-                  }`}
-              >
-                <span>{cat.icon}</span>
-                {cat.name}
-              </button>
-            ))}
-          </div>
-
           {/* Menu Grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                duration: 0.5
-              }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {MENU_ITEMS[activeCategory as keyof typeof MENU_ITEMS].map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence>
+              {ALL_MENU_ITEMS.slice(0, visibleCount).map((item, index) => (
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, y: 30 }}
@@ -371,12 +372,29 @@ export default function Home() {
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
-          </AnimatePresence>
+            </AnimatePresence>
+          </div>
+
+          {/* Show More Button */}
+          {visibleCount < ALL_MENU_ITEMS.length && (
+            <div className="mt-12 flex justify-center">
+              <motion.button
+                whileHover={{ scale: 1.1, y: 5 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setVisibleCount(ALL_MENU_ITEMS.length)}
+                className="flex flex-col items-center gap-2 text-amber-900 font-bold uppercase tracking-widest text-sm"
+              >
+                <span>View All Menu</span>
+                <div className="w-10 h-10 rounded-full border-2 border-amber-900 flex items-center justify-center animate-bounce">
+                  <ArrowRight className="w-4 h-4 rotate-90" />
+                </div>
+              </motion.button>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* About Us Section */}
+      {/* Our Services Section */}
       <section id="about" ref={aboutRef} className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -384,28 +402,26 @@ export default function Home() {
               style={{ y: imageY }}
               className="relative"
             >
-              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl">
-                <img
-                  src="/OPMandira/images/restaurant-interior.jpg"
-                  alt="Mandira Restaurant Interior"
-                  className="w-full h-[700px] object-cover"
-                />
+              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl h-[500px] md:h-[700px] bg-stone-200">
+                <EventSlider onPauseChange={setIsSliderPaused} />
               </div>
               {/* Floating Stats */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 }}
+                animate={{ opacity: isSliderPaused ? 0 : 1, x: isSliderPaused ? 20 : 0 }}
+                whileInView={{ opacity: isSliderPaused ? 0 : 1, x: isSliderPaused ? 20 : 0 }}
+                transition={{ duration: 0.3 }}
                 className="absolute -right-8 top-1/4 bg-white p-8 rounded-3xl shadow-2xl z-20 max-w-[200px]"
               >
-                <p className="text-4xl font-serif font-bold text-amber-900">25+</p>
+                <p className="text-4xl font-serif font-bold text-amber-900"></p>
                 <p className="text-sm font-bold text-stone-500 uppercase tracking-wider mt-1">Years of Culinary Excellence</p>
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.7 }}
+                animate={{ opacity: isSliderPaused ? 0 : 1, x: isSliderPaused ? -20 : 0 }}
+                whileInView={{ opacity: isSliderPaused ? 0 : 1, x: isSliderPaused ? -20 : 0 }}
+                transition={{ duration: 0.3 }}
                 className="absolute -left-8 bottom-1/4 bg-amber-900 p-8 rounded-3xl shadow-2xl z-20 text-white max-w-[200px]"
               >
                 <p className="text-4xl font-serif font-bold">100%</p>
@@ -431,7 +447,7 @@ export default function Home() {
                   transition={{ delay: 0.2 }}
                   className="text-5xl md:text-6xl font-serif font-bold mt-4 text-stone-900 leading-tight"
                 >
-                  A Legacy of <br />
+                  Our Services <br />
                   <span className="text-amber-700 italic">Taste & Tradition</span>
                 </motion.h2>
               </div>
@@ -439,19 +455,19 @@ export default function Home() {
               <div className="space-y-8">
                 {[
                   {
-                    icon: <History className="w-6 h-6" />,
-                    title: "Humble Beginnings",
-                    desc: "Founded in 1998, Mandira started as a small family kitchen with a passion for bringing authentic Indonesian flavors to the local community."
+                    icon: <Utensils className="w-6 h-6" />,
+                    title: <>Dine in at <span style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA</span> House</>,
+                    desc: "Experience our warm hospitality and exquisite atmosphere in the heart of the city with our signature dishes."
                   },
                   {
-                    icon: <Globe className="w-6 h-6" />,
-                    title: "Global Evolution",
-                    desc: "Over the decades, we've expanded our horizons, blending Western techniques and Chinese traditions with our deep-rooted local heritage."
+                    icon: <Truck className="w-6 h-6" />,
+                    title: "Catering Service",
+                    desc: "Bring the flavors of Mandira to your special events with our professional and customizable catering solutions."
                   },
                   {
-                    icon: <Heart className="w-6 h-6" />,
-                    title: "Our Philosophy",
-                    desc: "We believe food is a universal language. Every dish we serve is crafted with love, using only the freshest locally-sourced ingredients."
+                    icon: <Wine className="w-6 h-6" />,
+                    title: "Private Dining",
+                    desc: "Exclusive and intimate dining experiences tailored for your most memorable occasions and private gatherings."
                   }
                 ].map((item, i) => (
                   <motion.div
@@ -478,10 +494,15 @@ export default function Home() {
                 transition={{ delay: 0.8 }}
                 className="pt-6"
               >
-                <button className="bg-stone-900 text-white px-10 py-4 rounded-full font-bold hover:bg-stone-800 transition-all shadow-xl flex items-center gap-3 group">
-                  Learn More About Us
+                <a
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-stone-900 text-white px-10 py-4 rounded-full font-bold hover:bg-stone-800 transition-all shadow-xl inline-flex items-center gap-3 group"
+                >
+                  Book Now
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
               </motion.div>
             </motion.div>
           </div>
@@ -505,28 +526,29 @@ export default function Home() {
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-5xl font-serif font-bold"
+                className="text-4xl md:text-5xl   font-bold"
+                style={{ fontFamily: "'Julius Sans One', sans-serif" }}
               >
-                Mandira on <span className="italic text-amber-400">Instagram</span>
+                Mandira<span className="italic text-amber-400">on Instagram</span>
               </motion.h2>
             </div>
             <motion.a
-              href="#"
+              href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors font-bold uppercase tracking-widest text-xs border-b border-stone-700 pb-1"
             >
-              @mandirarestaurant <ExternalLink className="w-3 h-3" />
+              @mandira <ExternalLink className="w-3 h-3" />
             </motion.a>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {[
-              { url: '/OPMandira/images/insta-1.jpg', label: 'Chef at work' },
-              { url: '/OPMandira/images/insta-2.jpg', label: 'Signature Drinks' },
-              { url: '/OPMandira/images/insta-3.jpg', label: 'Cozy Corner' },
-              { url: '/OPMandira/images/insta-4.jpg', label: 'Plating Art' },
-              { url: '/OPMandira/images/insta-5.jpg', label: 'Fresh Pizza' },
+              { url: '/MandiraHouse/images/insta-1.jpg', label: 'Chef at work' },
+              { url: '/MandiraHouse/images/insta-2.jpg', label: 'Signature Drinks' },
+              { url: '/MandiraHouse/images/insta-3.jpg', label: 'Cozy Corner' },
+              { url: '/MandiraHouse/images/insta-4.jpg', label: 'Plating Art' },
+              { url: '/MandiraHouse/images/insta-5.jpg', label: 'Fresh Pizza' },
             ].map((story, i) => (
               <motion.div
                 key={i}
@@ -562,25 +584,29 @@ export default function Home() {
 
       {/* Footer / Contact */}
       <footer id="contact" className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div
-            className="text-2xl font-bold tracking-[0.2em] text-white"
-            style={{ fontFamily: "'Julius Sans One', sans-serif" }}
-          >
-            MANDIRA
+        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-12">
+          {/* Logo Container - Adjust width here (e.g. w-32, w-40, w-[200px]) to resize */}
+          <div className="relative w-[200px]">
+            <img
+              src="/MandiraHouse/Logo_mandira.svg"
+              alt="MANDIRA"
+              className="w-full h-auto object-contain brightness-0 invert"
+            />
           </div>
-          <div className="flex items-center gap-8 text-sm">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
-              <Globe className="w-5 h-5" />
-            </a>
+          <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
+            <div className="flex items-center gap-8">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+            </div>
+            <div className="flex items-center gap-4">
+              <a href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
+                <Globe className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </footer>
