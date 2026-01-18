@@ -201,7 +201,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-[40%_60%] gap-12 items-center">
-          <div className="space-y-8">
+          <div className="space-y-8 order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -289,7 +289,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative block mt-12 lg:mt-0"
+            className="relative block order-1 lg:order-2"
           >
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl h-[450px] lg:h-[720px]">
               <EventSliderMenu onNameChange={setHeroDishName} />
