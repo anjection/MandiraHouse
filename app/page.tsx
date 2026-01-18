@@ -105,6 +105,7 @@ export default function Home() {
                 className="hover:text-amber-700 transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
+                  setIsMenuOpen(false);
                   document.querySelector(item.href)?.scrollIntoView({
                     behavior: 'smooth'
                   });
@@ -118,7 +119,7 @@ export default function Home() {
           <motion.a
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            href="https://wa.me/6281234567890" // You can change this number
+            href="https://wa.me/6285378736669" // Updated for consistency
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:block bg-amber-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-amber-800 transition-all shadow-lg shadow-amber-900/20"
@@ -154,17 +155,14 @@ export default function Home() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-stone-900 text-lg font-medium uppercase tracking-widest hover:text-amber-700 transition-colors"
+                    className="mobile-nav-link text-stone-900 text-lg font-medium uppercase tracking-widest hover:text-amber-700 transition-colors"
                     onClick={(e) => {
                       e.preventDefault();
                       setIsMenuOpen(false);
-                      // Smooth scroll after a slight delay to allow the menu to start closing
-                      setTimeout(() => {
-                        const element = document.querySelector(item.href);
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }, 10);
+                      const element = document.querySelector(item.href);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
                     }}
                   >
                     {item.name}
@@ -212,9 +210,9 @@ export default function Home() {
                 Indonesian • Western • Chinese
               </span>
               <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[1.1] text-stone-900">
-                Elevating<br />
-                <span className="text-amber-700 italic">Local</span> <br />
-                Taste.
+                Dine in at<br />
+                <span className="text-amber-700 italic" style={{ fontFamily: "'Julius Sans One', sans-serif" }}>Mandira</span> <br />
+                House.
               </h1>
               <p className="mt-6 text-lg text-stone-600 max-w-md leading-relaxed">
                 Experience the rich heritage of local Indonesian spices, the comfort of Western classics, and the bold tastes of Chinese cuisine, all under one roof at Mandira.
@@ -301,7 +299,7 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-12 top-[75%] bg-white p-6 rounded-2xl shadow-xl z-20" // Adjust 'top-[75%]' to move up/down, '-right-12' for left/right
+              className="absolute -right-12 top-1/4 bg-white p-6 rounded-2xl shadow-xl z-20" // Adjust 'top-1/4' to move up/down, '-right-12' for left/right
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700">

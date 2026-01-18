@@ -205,6 +205,18 @@ export default function EventSliderMenu({ onPauseChange, onNameChange }: { onPau
                                             x: { type: "spring", stiffness: 300, damping: 30 },
                                             opacity: { duration: 0.5 }
                                         }}
+                                        drag="x"
+                                        dragConstraints={{ left: 0, right: 0 }}
+                                        dragElastic={1}
+                                        onDragEnd={(e, { offset, velocity }) => {
+                                            const swipe = swipePower(offset.x, velocity.x);
+
+                                            if (swipe < -swipeConfidenceThreshold) {
+                                                paginate(1);
+                                            } else if (swipe > swipeConfidenceThreshold) {
+                                                paginate(-1);
+                                            }
+                                        }}
                                         className="absolute max-w-full max-h-full object-contain shadow-2xl"
                                         alt={getImageName(MENU_IMAGES[currentIndex])}
                                     />
