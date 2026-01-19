@@ -678,7 +678,7 @@ export default function Home() {
             />
           </motion.div>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
               <a href="https://wa.me/6285378736669" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
                 <MessageCircleMore className="w-5 h-5" />
               </a>
@@ -694,7 +694,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <a href="#" className="hover:text-white transition-colors">all rights reserved to @anjection</a>
+            <a href="#" className="text-xs hover:text-white transition-colors">@ 2026 Mandira House - All rights reserved - anjection</a>
           </div>
         </div>
       </footer>
