@@ -4,7 +4,7 @@ import Script from 'next/script';
 import EventSlider from './components/EventSlider';
 import EventSliderMenu from './components/EventSliderMenu';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Utensils, ChevronDown, ChevronsDown, MoveDown, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine, FacebookIcon, MessageCircle, ArrowDown } from 'lucide-react';
+import { Utensils, ChevronDown, ChevronsDown, MessageCircleMore, MoveDown, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine, FacebookIcon, MessageCircle, ArrowDown } from 'lucide-react';
 import { useState, useRef } from 'react';
 import style from 'styled-jsx/style';
 
@@ -458,8 +458,9 @@ export default function Home() {
                   className="flex flex-col items-center gap-3 text-amber-900 font-bold uppercase tracking-widest text-sm group"
                 >
                   <span className="opacity-60 group-hover:opacity-100 transition-opacity">Discover More</span>
-                  <div className="w-12 h-12 rounded-full border border-amber-900/30 flex items-center justify-center animate-bounce group-hover:border-amber-900 transition-colors">
-                    <ArrowDown className="w-4 h-4" />
+                  <div className="w-12 h-12 flex items-center justify-center animate-bounce group-hover:border-amber-900 transition-colors">
+                    {/* className="w-12 h-12 rounded-full border border-amber-900/30 flex items-center justify-center animate-bounce group-hover:border-amber-900 transition-colors">*/}
+                    <ChevronDown className="w-10 h-10" />
                   </div>
                 </motion.button>
               </motion.div>
@@ -679,7 +680,7 @@ export default function Home() {
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
             <div className="flex items-center gap-4">
               <a href="https://wa.me/6285378736669" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircleMore className="w-5 h-5" />
               </a>
               <a href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
                 <Instagram className="w-5 h-5" />
