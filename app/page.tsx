@@ -222,7 +222,7 @@ export default function Home() {
                 Taste.
               </h1>
               <p className="mt-6 text-lg text-stone-600 max-w-md leading-relaxed">
-                Experience the rich heritage of local Indonesian spices, the comfort of Western classics, and the bold tastes of Chinese cuisine, all under one roof at Mandira.
+                Experience the rich heritage of local Indonesian spices, the comfort of Western classics, and the bold tastes of Chinese cuisine, all under one roof at <span className="text-amber-900" style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA.</span>
               </p>
             </motion.div>
 
@@ -601,7 +601,7 @@ export default function Home() {
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-5xl   font-bold"
+                className="text-4xl md:text-5xl hover:text-amber-900 transition-colors font-bold"
                 style={{ fontFamily: "'Julius Sans One', sans-serif" }}
               >
                 Mandira<span className="italic text-amber-400">on Instagram</span>
@@ -611,9 +611,9 @@ export default function Home() {
               href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors font-bold uppercase tracking-widest text-xs border-b border-stone-700 pb-1"
+              className="flex items-center text-stone-400 hover:text-white transition-colors font-bold uppercase tracking-widest text-xs border-b border-stone-700 pb-1"
             >
-              @mandira <ExternalLink className="w-3 h-3" />
+              @<span className="text-amber-900 hover:text-amber-600 transition-colors" style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA.</span> <ExternalLink className="w-3 h-3" />
             </motion.a>
           </div>
 
