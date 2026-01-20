@@ -88,10 +88,10 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-3xl font-bold tracking-[0.2em] text-amber-900"
+            className="text-3xl font-bold text-amber-900"
             style={{ fontFamily: "'Julius Sans One', sans-serif" }}
           >
-            MANDIRA
+            MANDIRA.
           </motion.div>
 
           {/* Desktop Menu */}
@@ -314,7 +314,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-sm font-bold">Chef's Selection</p>
-                  <p className="text-xs text-stone-500">{heroDishName} <span style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA</span></p>
+                  <p className="text-xs text-stone-500">{heroDishName} <span className="text-amber-900" style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA</span></p>
                 </div>
               </div>
             </motion.div>
@@ -531,7 +531,7 @@ export default function Home() {
                 {[
                   {
                     icon: <Utensils className="w-6 h-6" />,
-                    title: <>Dine in at <span style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA</span> House</>,
+                    title: <>Dine in at <span className="text-amber-900" style={{ fontFamily: "'Julius Sans One', sans-serif " }}>MANDIRA</span> House</>,
                     desc: "Experience our warm hospitality and exquisite atmosphere in the heart of the city with our signature dishes."
                   },
                   {
@@ -694,7 +694,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <a href="#" className="text-xs hover:text-white transition-colors">@ 2026 Mandira House - All rights reserved - anjection</a>
+            <a href="#" className="text-xs hover:text-white transition-colors">@ 2026 <span style={{ fontFamily: "'Julius Sans One', sans-serif" }}>MANDIRA</span> House - All rights reserved - anjection</a>
           </div>
         </div>
       </footer>
