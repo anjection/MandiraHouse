@@ -47,10 +47,10 @@ const ALL_MENU_ITEMS = [
     image: '/MandiraHouse/images/menu-items/nasi udang saus telur asin.png'
   },
   {
-    name: 'Udang Sc Mentega',
+    name: 'Udang Saus Mentega',
     price: 'Rp 35k',
     desc: 'Udang saus mentega, nasi putih, dan sayuran.',
-    image: '/MandiraHouse/images/menu-items/Udang Sc Mentega.png'
+    image: '/MandiraHouse/images/menu-items/Udang Saus Mentega.png'
   },
   {
     name: 'Capcay Goreng Kuah Ayam',
