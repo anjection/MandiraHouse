@@ -4,7 +4,13 @@ import Script from 'next/script';
 import EventSlider from './components/EventSlider';
 import EventSliderMenu from './components/EventSliderMenu';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Utensils, ChevronDown, ChevronsDown, MessageCircleMore, MoveDown, ArrowRight, UtensilsCrossed, Clock, MapPin, Globe, Soup, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine, FacebookIcon, MessageCircle, ArrowDown } from 'lucide-react';
+import AnimatedFacebookIcon from './icons/facebook-icon';
+import AnimatedInstagramIcon from './icons/instagram-icon';
+import AnimatedWhatsappIcon from './icons/whatsapp-icon';
+import AnimatedClockIcon from './icons/clock-icon';
+import AnimatedWorldIcon from './icons/world-icon';
+import AnimatedSoupIcon from './icons/soup-icon';
+import { Utensils, ChevronDown, ChevronsDown, MoveDown, ArrowRight, UtensilsCrossed, MapPin, ChevronRight, History, Heart, Users, Instagram, ExternalLink, Menu, X, Truck, Wine, MessageCircle, ArrowDown } from 'lucide-react';
 import { useState, useRef } from 'react';
 import style from 'styled-jsx/style';
 
@@ -287,7 +293,7 @@ export default function Home() {
             >
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-amber-50 rounded-lg text-amber-700">
-                  <Clock className="w-5 h-5" />
+                  <AnimatedClockIcon size={25} color="currentColor" />
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase text-stone-400">Open Daily</p>
@@ -296,7 +302,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-amber-50 rounded-lg text-amber-700">
-                  <Globe className="w-5 h-5" />
+                  <AnimatedWorldIcon size={25} color="currentColor" />
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase text-stone-400">Cuisine</p>
@@ -305,7 +311,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-amber-50 rounded-lg text-amber-700">
-                  <Soup className="w-5 h-5" />
+                  <AnimatedSoupIcon size={25} color="currentColor" />
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase text-stone-400">Authentic</p>
@@ -703,17 +709,17 @@ export default function Home() {
           </motion.div>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
             <div className="flex items-center gap-6">
-              <a href="https://wa.me/6285378736669" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
-                <MessageCircleMore className="w-5 h-5" />
+              <a href="https://wa.me/6285378736669" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors text-stone-400 hover:text-white">
+                <AnimatedWhatsappIcon size={24} color="currentColor" />
               </a>
-              <a href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
-                <Instagram className="w-5 h-5" />
+              <a href="https://www.instagram.com/mandira.ig" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors text-stone-400 hover:text-white">
+                <AnimatedInstagramIcon size={24} color="currentColor" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
-                <FacebookIcon className="w-5 h-5" />
+              <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors text-stone-400 hover:text-white">
+                <AnimatedFacebookIcon size={24} color="currentColor" />
               </a>
-              <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
-                <Globe className="w-5 h-5" />
+              <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors text-stone-400 hover:text-white cursor-pointer">
+                <AnimatedWorldIcon size={24} color="currentColor" />
               </a>
             </div>
           </div>
