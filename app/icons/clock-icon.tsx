@@ -1,6 +1,6 @@
 import { forwardRef, useImperativeHandle } from "react";
 
-import type { AnimatedIconHandle, AnimatedIconProps } from "./types";
+import type { AnimatedIconHandle, AnimatedIconProps } from "./icon-types";
 import { motion, useAnimate } from "framer-motion";
 
 const ClockIcon = forwardRef<AnimatedIconHandle, AnimatedIconProps>(
