@@ -17,16 +17,34 @@ const ALL_MENU_ITEMS = [
     image: '/MandiraHouse/images/menu-items/Nasgor Cikur Babat Sapi.png'
   },
   {
+    name: 'Nasi Goreng Omelete',
+    price: 'Rp 20k',
+    desc: 'Nasi goreng dengan omelete.',
+    image: '/MandiraHouse/images/menu-items/nasi goreng omelete.png'
+  },
+  {
     name: 'Short Plate Daging Sapi Sauce Lada Hitam',
     price: 'Rp 35k',
     desc: 'Short plate daging sapi dengan saus lada hitam, dan sayuran.',
     image: '/MandiraHouse/images/menu-items/Short Plate Daging Sapi Saus Lada Hitam.png'
   },
   {
+    name: 'Tongseng Daging Sapi',
+    price: 'Rp 35k',
+    desc: 'Tongseng daging sapi special.',
+    image: '/MandiraHouse/images/menu-items/Tongseng Daging.png'
+  },
+  {
     name: 'Spagheti Bolognaise',
     price: 'Rp 25k',
     desc: 'Spagheti dengan saus bolognaise, daging sapi cincang, dan keju parmesan.',
     image: '/MandiraHouse/images/menu-items/Spagheti Bolognaise.png'
+  },
+  {
+    name: 'Nasi Udang Saus Telur Asin',
+    price: 'Rp 35k',
+    desc: 'Nasi udang saus telur asin, nasi putih, dan sayuran.',
+    image: '/MandiraHouse/images/menu-items/nasi udang saus telur asin.png'
   },
   {
     name: 'Udang Sc Mentega',
@@ -51,6 +69,12 @@ const ALL_MENU_ITEMS = [
     price: 'Rp 15k',
     desc: 'Nasi ikan asin peda dengan cabe hijau.',
     image: '/MandiraHouse/images/menu-items/Nasi Ikan Asin Peda.png'
+  },
+  {
+    name: 'Lumpia ala Thai',
+    price: 'Rp 15k',
+    desc: 'Lumpia ala Thai.',
+    image: '/MandiraHouse/images/menu-items/Lumpia ala Thai.png'
   },
   {
     name: 'Snack Platter',

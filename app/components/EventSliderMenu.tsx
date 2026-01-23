@@ -7,9 +7,9 @@ import { ChevronLeft, ChevronRight, Pause, Play, Maximize2, X } from 'lucide-rea
 
 const MENU_IMAGES = [
     '/MandiraHouse/images/menu-slider/Nasgor Cikur Babat Sapi.png',
-    '/MandiraHouse/images/menu-slider/Short Plate DAging Sapi Saus Lada Hitam.png',
+    '/MandiraHouse/images/menu-slider/Short Plate Daging Sapi Saus Lada Hitam.png',
     '/MandiraHouse/images/menu-slider/Spagheti Bolognaise.png',
-    '/MandiraHouse/images/menu-slider/Udang Sc Mentega.png',
+    '/MandiraHouse/images/menu-slider/Udang Saus Mentega.png',
 ];
 
 
