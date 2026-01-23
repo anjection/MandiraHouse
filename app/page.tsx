@@ -693,7 +693,7 @@ export default function Home() {
             }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="relative w-[200px] cursor-pointer transition-all duration-300"
+            className="relative w-[100px] cursor-pointer transition-all duration-300"
           >
             <img
               src="/MandiraHouse/Logo_mandira.svg"
