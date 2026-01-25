@@ -29,6 +29,12 @@ const ALL_MENU_ITEMS = [
     image: '/MandiraHouse/images/menu-items/nasi goreng omelete.png'
   },
   {
+    name: 'Nasi Goreng Telur Mata Sapi',
+    price: 'Rp 20k',
+    desc: 'Nasi goreng telur mata sapi, acar dan krupuk.',
+    image: '/MandiraHouse/images/menu-items/Nasi Goreng.png'
+  },
+  {
     name: 'Short Plate Daging Sapi Sauce Lada Hitam',
     price: 'Rp 35k',
     desc: 'Short plate daging sapi dengan saus lada hitam, dan sayuran.',
@@ -39,6 +45,18 @@ const ALL_MENU_ITEMS = [
     price: 'Rp 35k',
     desc: 'Tongseng daging sapi special.',
     image: '/MandiraHouse/images/menu-items/Tongseng Daging.png'
+  },
+  {
+    name: 'Mie Goreng',
+    price: 'Rp ?',
+    desc: 'Mie goreng.',
+    image: '/MandiraHouse/images/menu-items/Mie Goreng.png'
+  },
+  {
+    name: 'Char Kwetiau Goreng',
+    price: 'Rp 35k',
+    desc: 'Char kwetiau goreng.',
+    image: '/MandiraHouse/images/menu-items/Char Kwetiau.png'
   },
   {
     name: 'Spagheti Bolognaise',
@@ -81,6 +99,12 @@ const ALL_MENU_ITEMS = [
     price: 'Rp 15k',
     desc: 'Lumpia ala Thai.',
     image: '/MandiraHouse/images/menu-items/Lumpia ala Thai.png'
+  },
+  {
+    name: 'Tempe Mendoan',
+    price: 'Rp 18k',
+    desc: 'Tempe mendoan.',
+    image: '/MandiraHouse/images/menu-items/Mendoan.png'
   },
   {
     name: 'Snack Platter',
